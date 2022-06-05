@@ -25,42 +25,62 @@ This function will create and insert/append the elements needed to display a "pa
 // studentsPerPage.
 
 function showPage(list, page){
-   startIndex = (page * 9) - 9;
-   endIndex = page * 9;
-};
+   const startIndex = (page * 9) - 9;
+   const endIndex = page * 9;
 
 
-const studentList = document.querySelector(".student-list");
-studentList.innerHTML = " ";
+   const studentList = document.querySelector("student-list");
+   studentList.innerHTML = " ";
 
-for (i=0; i< list.length; i++ ){
-   if (i>= startIndex && i <= endIndex){
-      let studentItem =  
-        <li class="student-item cf">
-            <div class="student-details">
-               <img class="avatar" src= ${list[i].picture.large} alt="Profile Picture">
-               <h3> ${list[i].name.first} , ${list[i].name.last} </h3>;
-               <span class= ${list[i].email} ></span>
-         </div>
-         <div class="joined-details">
-            <span class="date">Joined ${list[i].registered.date} </span>
-         </div>
-      </li>
+   for (i=0; i< list.length; i++ ){
+      if (i>= startIndex && i < endIndex){
+         let studentItem =  
+            <li class="student-item cf">
+                  <div class="student-details">
+                     <img class= "avatar" src= "https://randomuser.me/api/portraits/women/25.jpg" alt="Profile Picture"></img>
+                     <h3> ${list[i].name.first} , ${list[i].name.last} </h3>
+                     <span class= "email:"> ${list[i].email} </span>
+                  </div>
+                  <div class="joined-details">
+                     <span class="date">Joined ${list[i].registered.date} </span>
+                  </div>
+            </li>
+         }
       }
    };
 
-studentList.innerAdjacentHTML(beforeend, "studentItem");
+   console.log(studentList);
+   studentList.innerAdjacentHTML(beforeend, "studentItem");
 
-showPage(data, 1);
-
-
-{/* {/* //console.log(firstName);
-// } */}
-/* */}
-Create the `addPagination` function
-This function will create and insert/append the elements needed for the pagination buttons
-*/
+// showPage(data, 1);
 
 
+// // * Create the `addPagination` function
+// // // This function will create and insert/append the elements needed for the pagination buttons
 
-// Call functions
+// function addPagination(list){
+//      // create a variable to calculate the number of pages needed
+//      const numOfPages = Math.ceil(list.length / 9);
+//   // select the element with a class of `link-list` and assign it to a variable
+//      const linkList = document.querySelector("ul")
+//   // set the innerHTML property of the variable you just created to an empty string
+//    linkList.innerHTML = " ";
+//   // loop over the number of pages needed
+//     // create the elements needed to display the pagination button
+//     // insert the above elements
+
+//     for (i=1; i <= numOfPages; i++){
+
+//     }
+
+//   // give the first pagination button a class of "active"
+
+//   // create an event listener on the `link-list` element
+//     // if the click target is a button:
+//       // remove the "active" class from the previous button
+//       // add the active class to the clicked button
+//       // call the showPage function passing the `list` parameter 
+
+// }
+
+
