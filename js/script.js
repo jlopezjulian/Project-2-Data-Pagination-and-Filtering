@@ -14,20 +14,20 @@ For assistance:
 
 
 /*
-Create the `showPage` function
-This function will create and insert/append the elements needed to display a "page" of nine students
+Created the `showPage` function
+This function will create and insert/append the elements needed to display a "page" of 9 students
+Parameters are list which refer to the data.js sheet, page which indicates what page number is displayed
 */
-//const studentsPerPage = 9;
 
 
 function showPage(list, page){
    const startIndex = (page * 9) - 9;
    const endIndex = page * 9;
 
-
+//created a variable where student data will be added 
    const studentList = document.querySelector(".student-list");
    studentList.innerHTML = '';
-
+// for-loop is created to make the page dynamic, running each object in the list parameter 
    for (i=0; i< list.length; i++ ){
       if (i>= startIndex && i < endIndex){
          let studentItem =  
@@ -51,22 +51,20 @@ function showPage(list, page){
    showPage(data, 1);
 
 
-// // * Create the `addPagination` function
+// // * Created the `addPagination` function
 // // // This function will create and insert/append the elements needed for the pagination buttons
 
 function addPagination(list){
-//      // create a variable to calculate the number of pages needed
+//      // variable to calculate the number of pages needed
    const numOfPages = Math.ceil(list.length / 9);
-//   // select the element with a class of `link-list` and assign it to a variable
-   const linkList = document.querySelector(".link-List")
-//   // set the innerHTML property of the variable you just created to an empty string
+   const linkList = document.querySelector(".link-list")
    linkList.innerHTML = " ";
    
-  // loop over the number of pages needed
-    // create the elements needed to display the pagination button
-    // insert the above elements
+  // looped over the number of pages needed
+    // created the elements needed to display the pagination button
 
    for (i=1; i <= numOfPages; i++){
+   //template literal is created and inserted into the DOM 
       const button = 
          `
          <li>
@@ -77,17 +75,17 @@ function addPagination(list){
          let activeButton = document.querySelector("li button");
          activeButton.className = "active";
       }
+//created event listener to trigger click event from clicking on the button element 
+      linkList.addEventListener("click", (event) => {
+        if (event.target.tagName === "BUTTON"){
+           let pageClick = document.querySelector(".active");
+           pageClick.className = "";
+           event.target.className = "active";
+           showPage(list, event.target.textContent);
+        } 
+      })
+   }
 
-      // linkList.addEventListener("click", function()=> 
-   };
-
+//line 81 has a querySelector to avoiding doing a for-loop again since there is only 1 button with the active class
    addPagination(data);
-
-  // give the first pagination button a class of "active"
-
-  // create an event listener on the `link-list` element
-    // if the click target is a button:
-      // remove the "active" class from the previous button
-      // add the active class to the clicked button
-      // call the showPage function passing the `list` parameter 
 
