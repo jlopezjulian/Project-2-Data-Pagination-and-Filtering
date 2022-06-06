@@ -19,25 +19,22 @@ This function will create and insert/append the elements needed to display a "pa
 */
 //const studentsPerPage = 9;
 
-// startIndex = (page * 9) - 9;
-// endIndex = (page * 9);
-
-// studentsPerPage.
 
 function showPage(list, page){
    const startIndex = (page * 9) - 9;
    const endIndex = page * 9;
 
 
-   const studentList = document.querySelector("student-list");
-   studentList.innerHTML = " ";
+   const studentList = document.querySelector(".student-list");
+   studentList.innerHTML = '';
 
    for (i=0; i< list.length; i++ ){
       if (i>= startIndex && i < endIndex){
          let studentItem =  
+            `
             <li class="student-item cf">
                   <div class="student-details">
-                     <img class= "avatar" src= "https://randomuser.me/api/portraits/women/25.jpg" alt="Profile Picture"></img>
+                     <img class= "avatar" src= ${list[i].picture.large} alt="Profile Picture"></img>
                      <h3> ${list[i].name.first} , ${list[i].name.last} </h3>
                      <span class= "email:"> ${list[i].email} </span>
                   </div>
@@ -45,42 +42,52 @@ function showPage(list, page){
                      <span class="date">Joined ${list[i].registered.date} </span>
                   </div>
             </li>
+            `;
+            studentList.insertAdjacentHTML("beforeend", studentItem);
          }
       }
-   };
+   }
 
-   console.log(studentList);
-   studentList.innerAdjacentHTML(beforeend, "studentItem");
-
-// showPage(data, 1);
+   showPage(data, 1);
 
 
 // // * Create the `addPagination` function
 // // // This function will create and insert/append the elements needed for the pagination buttons
 
-// function addPagination(list){
+function addPagination(list){
 //      // create a variable to calculate the number of pages needed
-//      const numOfPages = Math.ceil(list.length / 9);
+   const numOfPages = Math.ceil(list.length / 9);
 //   // select the element with a class of `link-list` and assign it to a variable
-//      const linkList = document.querySelector("ul")
+   const linkList = document.querySelector(".link-List")
 //   // set the innerHTML property of the variable you just created to an empty string
-//    linkList.innerHTML = " ";
-//   // loop over the number of pages needed
-//     // create the elements needed to display the pagination button
-//     // insert the above elements
+   linkList.innerHTML = " ";
+   
+  // loop over the number of pages needed
+    // create the elements needed to display the pagination button
+    // insert the above elements
 
-//     for (i=1; i <= numOfPages; i++){
+   for (i=1; i <= numOfPages; i++){
+      const button = 
+         `
+         <li>
+            <button type= "button">${[i]}</button>
+         </li>
+         `;
+         linkList.insertAdjacentHTML("beforeend", button);
+         let activeButton = document.querySelector("li button");
+         activeButton.className = "active";
+      }
 
-//     }
+      // linkList.addEventListener("click", function()=> 
+   };
 
-//   // give the first pagination button a class of "active"
+   addPagination(data);
 
-//   // create an event listener on the `link-list` element
-//     // if the click target is a button:
-//       // remove the "active" class from the previous button
-//       // add the active class to the clicked button
-//       // call the showPage function passing the `list` parameter 
+  // give the first pagination button a class of "active"
 
-// }
-
+  // create an event listener on the `link-list` element
+    // if the click target is a button:
+      // remove the "active" class from the previous button
+      // add the active class to the clicked button
+      // call the showPage function passing the `list` parameter 
 
